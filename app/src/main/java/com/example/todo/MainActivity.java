@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean remove(int position){
         Context contex = getApplicationContext();
-        Toast.makeText(contex, "Yo task just got: DELETED", Toast.LENGTH_LONG).show();
+        Toast.makeText(contex, "Task successfully deleted", Toast.LENGTH_LONG).show();
         items.remove(position);
         itemsAdapter.notifyDataSetChanged();
         return true;
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         else{
-            Toast.makeText(this, "Bro.... there's no text there....",
+            Toast.makeText(this, "You didn't put any text",
                     Toast.LENGTH_LONG).show();
         }
     }
