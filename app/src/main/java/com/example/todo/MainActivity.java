@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private ArrayList<String> items;
@@ -46,6 +47,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        list.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //checkOffItem(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+         */
     }
 
     private boolean remove(int position){
@@ -69,6 +84,16 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Bro.... there's no text there....",
                     Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void checkOffItem(int position){
+        /*
+        Context contex = getApplicationContext();
+        Toast.makeText(contex, "Yo task just got: CHECKED", Toast.LENGTH_SHORT).show();
+        Objects.requireNonNull(itemsAdapter.getItem(position)).toLowerCase();
+        itemsAdapter.notifyDataSetChanged();
+
+         */
     }
 
 }
