@@ -47,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /*
+
         list.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //checkOffItem(position);
+                checkOffItem(position);
             }
 
             @Override
@@ -60,12 +60,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-         */
+
     }
 
     private boolean remove(int position){
-        Context contex = getApplicationContext();
-        Toast.makeText(contex, "Yo task just got: DELETED", Toast.LENGTH_LONG).show();
+        Context context = getApplicationContext();
+        Toast.makeText(context, "Yo task just got: DELETED", Toast.LENGTH_LONG).show();
         items.remove(position);
         itemsAdapter.notifyDataSetChanged();
         return true;
@@ -87,13 +87,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkOffItem(int position){
-        /*
-        Context contex = getApplicationContext();
-        Toast.makeText(contex, "Yo task just got: CHECKED", Toast.LENGTH_SHORT).show();
-        Objects.requireNonNull(itemsAdapter.getItem(position)).toLowerCase();
+
+        Context context = getApplicationContext();
+        Toast.makeText(context, "Yo task just got: CHECKED", Toast.LENGTH_SHORT).show();
         itemsAdapter.notifyDataSetChanged();
 
-         */
     }
 
 }
