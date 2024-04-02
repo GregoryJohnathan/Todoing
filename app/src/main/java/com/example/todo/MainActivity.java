@@ -67,7 +67,20 @@ public class MainActivity extends AppCompatActivity {
         complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                removeAll();
+                boolean tempIsAllDone = true;
+                for(boolean item : itemsSelection){
+                    if(item == false){
+                        tempIsAllDone = false;
+                        break;
+                    }
+                }
+                if(tempIsAllDone){
+                    removeAll();
+                } else{
+                    Context context = getApplicationContext();
+                    Toast.makeText(context, "Nice try bucko", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
