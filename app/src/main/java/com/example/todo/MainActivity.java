@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
         list = findViewById(R.id.list);
         button = findViewById(R.id.button);
+        Button complete = (Button) findViewById(R.id.Complete);
+
 
 
         // Apparently THIS is how you create a new item with button
@@ -53,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -63,6 +64,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        complete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeAll();
+            }
+        });
+
+    }
+
+    private boolean removeAll(){
+        for(int i = items.size() - 1; i >= 0; i--){
+            remove(i);
+        }
+        return true;
     }
 
     private boolean remove(int position){
