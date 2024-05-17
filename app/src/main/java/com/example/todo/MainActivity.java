@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView list;
     private Button button;
     private ArrayAdapter<String> itemsAdapter;
+    private ArrayList<Boolean> itemsSelection;
     private Handler handler = new Handler();
     private ProgressBar progressBar;
     private TextView loadingText;
@@ -176,6 +178,12 @@ public class MainActivity extends AppCompatActivity {
         //generateNotification(mContext, "PROHIBITED APP DETECTED");
     }
 
+    /**
+     * Checks off the item in the list and colors it grey. If already checked, removes it off of the
+     * checked items list and restores it to its normal color.
+     * @param position
+     * @param view
+     */
     private void checkOffItem(int position, View view){
         EditText input = findViewById(R.id.edit_text);
         Context context = getApplicationContext();
@@ -194,6 +202,5 @@ public class MainActivity extends AppCompatActivity {
         itemsAdapter.notifyDataSetChanged();
 
     }
-
 
 }
