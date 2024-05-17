@@ -106,6 +106,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Allows items in list to be checked on click
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                checkOffItem(position, view);
+            }
+        });
+
         // Removes every item on the list
         complete.setOnClickListener(new View.OnClickListener() {
             @Override
