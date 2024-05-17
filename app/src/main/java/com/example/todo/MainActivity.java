@@ -128,10 +128,11 @@ public class MainActivity extends AppCompatActivity {
      * @param position
      * @return
      */
-    private boolean remove(int position) {
-        Context contex = getApplicationContext();
-        Toast.makeText(contex, "Yo task just got: DELETED", Toast.LENGTH_LONG).show();
+    private boolean remove(int position){
+        Context context = getApplicationContext();
+        Toast.makeText(context, "Yo task just got: DELETED", Toast.LENGTH_LONG).show();
         items.remove(position);
+        itemsSelection.remove(position);
         itemsAdapter.notifyDataSetChanged();
         return true;
     }
@@ -140,20 +141,20 @@ public class MainActivity extends AppCompatActivity {
      * Adds a task to the list.
      * @param view
      */
-    private void additem(View view) {
+    private void additem(View view){
         EditText input = findViewById(R.id.edit_text);
         String itemText = input.getText().toString();
 
-        if (!(itemText.equals(""))) {
+        if(!(itemText.equals(""))){
             itemsAdapter.add(itemText);
             input.setText("");
-        } else {
+            itemsSelection.add(false);
+        }
+
+        else{
             Toast.makeText(this, "Bro.... there's no text there....",
                     Toast.LENGTH_LONG).show();
         }
-
-
-
     }
 
     /**
@@ -173,6 +174,25 @@ public class MainActivity extends AppCompatActivity {
 
 
         //generateNotification(mContext, "PROHIBITED APP DETECTED");
+    }
+
+    private void checkOffItem(int position, View view){
+        EditText input = findViewById(R.id.edit_text);
+        Context context = getApplicationContext();
+
+
+        if(!itemsSelection.get(position)){
+            Toast.makeText(context, "Yo task just got: CHECKED", Toast.LENGTH_SHORT).show();
+            view.setBackgroundColor(Color.GRAY);
+        } else{
+            Toast.makeText(context, "Yo task just got: UNCHECKED", Toast.LENGTH_SHORT).show();
+            view.setBackgroundColor(Color.WHITE);
+        }
+        itemsSelection.set(position, !itemsSelection.get(position));
+
+        //itemsAdapter.getItem(position)
+        itemsAdapter.notifyDataSetChanged();
+
     }
 
 
