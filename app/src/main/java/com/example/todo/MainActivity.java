@@ -30,11 +30,6 @@ public class MainActivity extends AppCompatActivity {
     private ArrayAdapter<String> itemsAdapter;
     private ArrayList<Boolean> itemsSelection;
     private Handler handler = new Handler();
-    private ProgressBar progressBar;
-    private TextView loadingText;
-    private int progressStatus;
-    private int counter = 0;
-    private int progressBoost;
     Context mContext = this;
 
 
