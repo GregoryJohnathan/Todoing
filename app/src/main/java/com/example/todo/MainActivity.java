@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
         Button complete = (Button) findViewById(R.id.Complete);
 
+        itemsSelection = new ArrayList<>();
+
         new Thread(new Runnable() {
             @Override
             public void run() {
