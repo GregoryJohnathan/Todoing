@@ -60,13 +60,14 @@ public class MainActivity extends AppCompatActivity {
 
                     String currentRunningActivityName = taskInfo.get(0).topActivity.getClassName();
 
+                    // Checks if the user is not on the app and if there are still any items
+                    // existing in the list
                     if(currentRunningActivityName.equals("com.google.android.apps.nexuslauncher.NexusLauncherActivity") &&
                     items.size() > 0){
 
-                        Log.d("ALERT:", "PROHIBITED APP DETECTED");
+                        Log.d("ALERT:", "LEFT APPLICATION");
 
                         sendUserToApp();
-
                     }
 
 
@@ -92,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
         items = new ArrayList<>();
         itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         list.setAdapter(itemsAdapter);
+
+        // Removes an item if held down for long enough
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -99,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Removes every item on the list
         complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,6 +112,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Removes every task from the list.
+     * @return
+     */
     private boolean removeAll() {
         for (int i = items.size() - 1; i >= 0; i--) {
             remove(i);
@@ -115,6 +123,11 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Removes a task from the list.
+     * @param position
+     * @return
+     */
     private boolean remove(int position) {
         Context contex = getApplicationContext();
         Toast.makeText(contex, "Yo task just got: DELETED", Toast.LENGTH_LONG).show();
@@ -123,6 +136,10 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Adds a task to the list.
+     * @param view
+     */
     private void additem(View view) {
         EditText input = findViewById(R.id.edit_text);
         String itemText = input.getText().toString();
@@ -138,6 +155,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    /**
+     * Sends the user back to the Jumpstarter app.
+     */
     public void sendUserToApp(){
 
         Intent startMain = new Intent(Intent.ACTION_MAIN);
